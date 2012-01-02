@@ -15,8 +15,6 @@ input {
 	font: 400 36px/38px Helvetica,Arial,sans-serif;
 }
 input[type=submit] {
-	width: 100%;
-	overflow: wrap;
 	margin: 20px auto 20px;
 }
 input[type=text] {

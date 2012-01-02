@@ -22,13 +22,23 @@ function fetch($leftCity, $rightCity, $dep) {
 	</AirAvailabilityQuery>
 	</AirSessionRequest>';
 
-	$result = file_get_contents('http://api.ean.com/ean-services/rs/air/200919/xmlinterface.jsp?' . http_build_query(array(
-		'cid' => '000',
-		'resType' => 'air',
-		'intfc' => 'ws',
-		'apiKey' => Config::API_KEY,
-		'xml' => $xml,
-	)));
+	$hash = md5($xml);
+	$haveAPC = extension_loaded('apc');
+	if ($haveAPC && ($result = apc_fetch('ourmidpoint_' . $hash))) {
+		header("X-ourmidpoint-cache: " . $hash);
+	} else {
+		header("X-ourmidpoint-cache: NO");
+		$result = file_get_contents('http://api.ean.com/ean-services/rs/air/200919/xmlinterface.jsp?' . http_build_query(array(
+			'cid' => '000',
+			'resType' => 'air',
+			'intfc' => 'ws',
+			'apiKey' => Config::API_KEY,
+			'xml' => $xml,
+		)));
+		if ($haveAPC) {
+			apc_store('ourmidpoint_' . $hash, $result, 60*60*24);
+		}
+	}
 	return $result;
 }
 

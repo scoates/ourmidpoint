@@ -63,9 +63,9 @@ if (count($input) == $count) {
 							$parsed['right']['directAirports']
 						);
 						if ($intersect) {
-							echo "You should meet in: " . implode(', ', $intersect);
+							echo "<em>You should meet in: " . implode(', ', $intersect) . "</em>\n";
 						} else {
-							echo "No cities found. )-:";
+							echo "<em>No cities found. )-:</em>\n";
 						}
 					}
 					?>

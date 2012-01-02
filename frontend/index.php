@@ -10,7 +10,7 @@ $safe = array_map(function ($el) use (&$count) {
 	if ($el) {
 		++$count;
 	}
-	return htmlentities($el, ENT_QUOTES, 'UTF-8');
+	return htmlentities(strtoupper($el), ENT_QUOTES, 'UTF-8');
 }, $input);
 
 if (count($input) == $count) {

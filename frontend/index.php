@@ -48,7 +48,7 @@ if (count($input) == $count) {
 			<div id="box">
 				<div id="box-content">
 					<form action="./#result" method="GET">
-						I will be travelling from:
+						I will be travelling from
 						<input type="text" class="airport" name="f" value="<?=$safe['f']?>"/>
 						and I would like to visit a friend who will be travelling from
 						<input type="text" class="airport" name="t" value="<?=$safe['t']?>"/> on

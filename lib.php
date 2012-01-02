@@ -52,6 +52,9 @@ function parse($x, $leftCity, $rightCity) {
 	$left['city'] = $leftCity;
 	$right['city'] = $rightCity;
 
+	if (!isset($x->SegmentList->Segment)) {
+		return false;
+	}
 	foreach ($x->SegmentList->Segment as $seg) {
 		if ($seg->originCityCode == $left['city']) {
 			$left['directAirports'][] = $seg->destinationCityCode;

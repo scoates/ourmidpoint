@@ -18,7 +18,7 @@ $safe = array_map(function ($el) use (&$count) {
 	return htmlentities(strtoupper($el), ENT_QUOTES, 'UTF-8');
 }, $input);
 
-
+$error = false;
 if (count($input) == $count) {
 	// success
 	$result = fetch($input['f'], $input['t'], $dep);
@@ -26,6 +26,9 @@ if (count($input) == $count) {
 	//echo '<pre> ' . htmlentities($result) . ' </pre>';
 	$xml = simplexml_load_string($result);
 	$parsed = parse($xml, $input['f'], $input['t']);
+	if (!$parsed) {
+		$error = true;
+	}
 } else {
 	$parsed = null;
 }
@@ -68,6 +71,8 @@ if (count($input) == $count) {
 						} else {
 							echo "<em>No cities found. )-:</em>\n";
 						}
+					} elseif ($error) {
+						?><a name="result"></a><em>An error of some type went and happened. Oopsie. /-:</em><?php
 					}
 					?>
 				</div>

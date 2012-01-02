@@ -6,6 +6,11 @@ $input = array(
 	'd' => isset($_GET['d']) ? $_GET['d'] : date('m/d/Y', time() + 30 * 24 * 60 * 60),
 );
 $count = 0;
+// enforce time
+if (!($dep = strtotime($input['d']))) {
+	$dep = time() + (30 * 24 * 60 * 60);
+	$input['d'] = date('m/d/Y', $dep);
+}
 $safe = array_map(function ($el) use (&$count) {
 	if ($el) {
 		++$count;
@@ -13,12 +18,9 @@ $safe = array_map(function ($el) use (&$count) {
 	return htmlentities(strtoupper($el), ENT_QUOTES, 'UTF-8');
 }, $input);
 
+
 if (count($input) == $count) {
 	// success
-	if (!($dep = strtotime($input['d']))) {
-		$dep = time() + (30 * 24 * 60 * 60);
-	}
-
 	$result = fetch($input['f'], $input['t'], $dep);
 	//$result = file_get_contents('out.xml');
 	//echo '<pre> ' . htmlentities($result) . ' </pre>';

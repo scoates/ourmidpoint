@@ -1,0 +1,43 @@
+body {
+	background: none repeat scroll 0 0 #F2F2F2;
+	font: 400 36px/38px Helvetica,Arial,sans-serif;
+}
+#box {
+	background: #FFFFFF;
+	border: 1px solid #D4D4D4;
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.15);
+	margin: 60px auto 20px;
+	padding: 20px 40px;
+	width: 500px;
+	display: block;
+}
+input {
+	font: 400 36px/38px Helvetica,Arial,sans-serif;
+}
+input[type=submit] {
+	width: 100%;
+	margin: 20px auto 20px;
+}
+input[type=text] {
+	border: 0;
+	border-bottom: 2px dashed green;
+	padding-bottom: 5px;
+	text-align: center;
+}
+input.airport {
+	width: 100px;
+}
+input.date {
+	width: 200px;
+}
+
+ul.ui-autocomplete, div.ui-datepicker {
+	background-color: #ccc;
+	max-height: 400px;
+	max-width: 500px;
+	overflow: auto;
+	font: 400 12px/14px Helvetica,Arial,sans-serif;
+}
+.ui-datepicker-next {
+	float: right;
+}

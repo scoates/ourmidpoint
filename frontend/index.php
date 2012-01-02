@@ -47,7 +47,7 @@ if (count($input) == $count) {
 		<div id="wrap" class="container">
 			<div id="box">
 				<div id="box-content">
-					<form action="./" method="GET">
+					<form action="./#result" method="GET">
 						I will be travelling from:
 						<input type="text" class="airport" name="f" value="<?=$safe['f']?>"/>
 						and I would like to visit a friend who will be travelling from
@@ -58,6 +58,7 @@ if (count($input) == $count) {
 
 					<?php
 					if ($parsed) {
+						?><a name="result"></a><?php
 						$intersect = array_intersect(
 							$parsed['left']['directAirports'],
 							$parsed['right']['directAirports']

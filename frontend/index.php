@@ -15,10 +15,11 @@ $safe = array_map(function ($el) use (&$count) {
 
 if (count($input) == $count) {
 	// success
-	$dep = time() + (30 * 24 * 60 * 60);
-	$ret = $dep + (7 * 24 * 60 * 60);
+	if (!($dep = strtotime($input['d']))) {
+		$dep = time() + (30 * 24 * 60 * 60);
+	}
 
-	$result = fetch($input['f'], $input['t'], $dep, $ret);
+	$result = fetch($input['f'], $input['t'], $dep);
 	//$result = file_get_contents('out.xml');
 	//echo '<pre> ' . htmlentities($result) . ' </pre>';
 	$xml = simplexml_load_string($result);

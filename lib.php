@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/config.php';
 
-function fetch($leftCity, $rightCity, $dep, $ret) {
+function fetch($leftCity, $rightCity, $dep) {
 
 	// http://api.ean.com/ean-services/rs/air/200919/xmlinterface.jsp
 	// cid=55505&resType=air&intfc=ws

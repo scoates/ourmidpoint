@@ -80,6 +80,9 @@ if (count($input) == $count) {
 			at: "bottom",
 		}
 	});
+	$("input.airport").blur(function () {
+		$(this).val($(this).val().toUpperCase().substr(0,3));
+	});
 	$(function() {
 		$("input.date").datepicker();
 	});
